@@ -1,27 +1,38 @@
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: #f8fafd;
-  color: #222;
-  margin: 0;
-  padding: 0;
+  background: linear-gradient(135deg,#e3f2fd 0%,#fff 70%);
+  color: #20223a; margin: 0; padding: 0;
 }
-h1, h2 { text-align: center; margin-top: 1em;}
-section { margin: 1em auto; max-width: 480px; background: #fff; border-radius: 10px; box-shadow: 0 2px 7px #0001; padding: 1.1em;}
-.config label {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 0.7em;
+h1 { text-align: center; font-size: 2em; font-weight: 700; margin-top: 1.2em; letter-spacing:0.01em;}
+h2 { text-align: center; color: #1976d2; letter-spacing:0.04em;}
+section { margin: 1.2em auto; max-width: 600px; background: none; border-radius: 18px; padding: 1.1em;}
+.config { background: rgba(255,255,255,0.97);}
+.cards { display: flex; flex-wrap: wrap; gap:2vw; justify-content: center;}
+.card { flex:1 1 320px; max-width:430px; background:#fff; border-radius: 14px; box-shadow: 0 2px 18px #aad3ff22; margin: 1em; padding:1.1em;}
+
+.floating-shadow { box-shadow: 0 2px 16px #66baff14, 0 1.5px 12px #2aacf520;}
+input[type=number] {
+  width: 110px; padding: 8px; margin-left:12px; border-radius: 8px;
+  border: 1.7px solid #8ecaff; font-size:1.08em; transition:.17s;
 }
-input[type=number] { width: 100px; padding: 5px 7px; border-radius: 4px; }
+input[type=number]:focus {border:#2979ff 1.7px solid;background:#e7f5ff;}
 button {
-  padding: 11px 18px; border: none; border-radius: 7px;
-  margin: 10px 6px; background: #007aff; color: #fff; font-weight: bold; font-size: 1.08em;
-  box-shadow: 0 2px 6px #005bbb44; transition: 0.15s;
+  padding: 13px 22px; margin: 12px 7px; border: none; border-radius: 999px;
+  background: linear-gradient(90deg,#007aff 70%,#4ab9fd 100%);
+  color: #fff; font-weight: 700; font-size:1.09em; letter-spacing:0.01em;
+  box-shadow: 0 3px 16px #b9eaff60, 0 1.5px 7px #29bbfc15; outline: none;
+  cursor: pointer; transition: .14s;
 }
-button:active { background: #005bbb;}
-.btn-sec { background: #ff9800;}
-#portfolio td input { width:65px; }
-.rebalance-alert { color:#fff; background: #e74c3c; padding:0.7em 1em; border-radius:6px; margin:1em 0; text-align:center;}
-.statsbox { padding: 1em; background:#e3f2fd; border-radius:8px; text-align:center; margin:1em 0;}
-@media (max-width:600px) {
-  section { margin:1em 3vw; }
-}
+button:hover { background: linear-gradient(90deg,#2979ff 70%,#62d1fb 100%);}
+.btn-sec { background: #ff9800; color:#fff; font-weight:600;}
+.glass-action {background: rgba(0,122,255,0.19); border: 2.3px solid #6fcbff; color:#007aff;}
+#portfolio td input { width:75px; }
+.statsbox { padding:1.2em; background:#e3f2fd; border-radius:11px; box-shadow: 0 2px 10px #c7eafd55;}
+.rebalance-alert { color:#fff;background:#e74c3c;padding:1em 1.3em;border-radius:8px;font-size:1.13em;margin:1.5em 0;text-align:center;animation: alertFade 1.6s;}
+@keyframes alertFade { 0%{opacity:0;} 75%{opacity:1;} 100%{opacity:0.95;} }
+.table-box { background:rgba(255,255,255,0.95); border-radius:13px; padding:1em;}
+table { width:100%; border-collapse:collapse;}
+th, td{text-align:center;padding:7px;}
+tr[style*="background"] {animation: flash 0.6s;}
+@keyframes flash { 0%{background-color:#ffeaeb;} 50%{background-color:#ffe0e0;} 100%{background-color:#fff;} }
+@media (max-width:750px) { .cards{flex-direction:column;align-items:center;} section,.card{max-width:97vw;} }
