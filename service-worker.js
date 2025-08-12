@@ -1,4 +1,4 @@
-const CACHE_NAME = "investment-dashboard-v1";
+const CACHE_NAME = "investment-dashboard-v2";
 const urlsToCache = [
   "/",
   "/index.html",
@@ -14,11 +14,8 @@ self.addEventListener("install", e => {
       .then(cache => cache.addAll(urlsToCache))
   );
 });
-
 self.addEventListener("fetch", e => {
   e.respondWith(
-    caches.match(e.request).then(
-      res => res || fetch(e.request)
-    )
+    caches.match(e.request).then(res => res || fetch(e.request))
   );
 });
