@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-  <title>Dashboard Investimenti (PRO)</title>
+  <title>Dashboard Investimenti PRO</title>
   <link rel="stylesheet" href="style.css"/>
   <link rel="manifest" href="manifest.json"/>
   <meta name="theme-color" content="#007aff">
 </head>
 <body>
   <h1>📊 Dashboard Investimenti</h1>
-  
-  <section class="config">
+
+  <section class="config floating-shadow">
     <label>Invest/mese (€) <input type="number" id="inpAmount" value="200"></label>
     <label>Durata (anni) <input type="number" id="inpYears" value="20"></label>
     <label>Rendimento (%) <input type="number" id="inpReturn" value="6"></label>
@@ -20,28 +20,38 @@
     <label>Ribilanciamento (%) <input type="number" id="inpReb" value="5"></label>
     <button onclick="simulatePAC()" class="main-btn">Simula PAC</button>
     <button onclick="exportCSV()" class="btn-sec">Esporta Storico CSV</button>
+    <button onclick="manualSave()" class="main-btn glass-action">💾 Salva Portafoglio</button>
   </section>
 
-  <section id="portfolio"></section>
-  <button onclick="saveSnapshot()" class="btn-sec">💾 Snapshot</button>
-
+  <section id="portfolio" class="floating-shadow"></section>
+  
   <section>
-    <h2>📈 Andamento + CAGR & Max Drawdown</h2>
-    <canvas id="historyChart"></canvas>
-    <div id="stats"></div>
-    <h2>📊 Allocazione Attuale</h2>
-    <canvas id="allocationChart"></canvas>
-    <h2>📉 Distribuzione Proiezioni Monte Carlo</h2>
-    <canvas id="mcChart"></canvas>
-    <div id="taxSummary"></div>
-    <div id="rebalanceAlert"></div>
+    <button onclick="saveSnapshot()" class="btn-sec glass-action">💾 Snapshot Giornaliero</button>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <h2>📈 Andamento & CAGR</h2>
+      <canvas id="historyChart"></canvas>
+      <div id="stats"></div>
+    </div>
+    <div class="card">
+      <h2>📊 Allocazione Attuale</h2>
+      <canvas id="allocationChart"></canvas>
+    </div>
+    <div class="card">
+      <h2>📉 Monte Carlo (proiezioni future)</h2>
+      <canvas id="mcChart"></canvas>
+      <div id="taxSummary"></div>
+      <div id="rebalanceAlert"></div>
+    </div>
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="app.js"></script>
   <script>
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js").then(()=>console.log("Service Worker registrato"));
+      navigator.serviceWorker.register("service-worker.js");
     }
   </script>
 </body>
